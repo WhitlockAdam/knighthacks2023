@@ -49,6 +49,10 @@ body {
   padding: 1rem;
   width: 100%;
 }
+
+.maps #map {
+  width: 100%;
+}
 .navBar {
   font-size: 1.25rem;
   display: flex;
