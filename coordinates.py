@@ -1,20 +1,10 @@
-from firebase_admin import db
+import firebase_admin
+from firebase_admin import db,credentials
 
-ref = db.reference('https://refill-radar-database-default-rtdb.firebaseio.com/')
-
-class Retrieve:
-    def _init_(self, location, longitude, latitude, image, direction):
-        self.location = location
-        self.longitude = longitude
-        self.latitude = latitude
-        self.image = image
-        self.direction = direction
-
-    def _repr_(self):
-        return f"Location(\
-                location={self.location}, \
-                longitude={self.longitude}, \
-                latitude={self.latitude}, \
-                image={self.image}, \
-                direction={self.direction}\
-            )"
+cred = credentials.Certificate("Credentials-firebase.json")
+thing = firebase_admin.initialize_app(cred, {"databaseURL": "https://refill-radar-database-default-rtdb.firebaseio.com/.json" })
+print(thing.credential)
+ref = db.reference("/")
+location = db.reference("/Locations").get()
+library = location.get("Library")
+print(library)
