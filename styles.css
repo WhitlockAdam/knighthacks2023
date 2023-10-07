@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+}
+
+body {
+  background: rgb(193, 255, 114);
+  background: radial-gradient(
+    circle,
+    rgba(193, 255, 114, 1) 8%,
+    rgba(56, 182, 255, 1) 100%
+  );
+  /* background-color: #5e17eb; */
+}
+
+.centered {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+
+.mapContainer {
+  border: 2px solid red;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+}
+
+.navBar {
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem 10%;
+  justify-content: space-between;
+  background-color: white;
+}
+
+li,
+a,
+button {
+  text-decoration: none;
+  color: black;
+}
+
+.links ul {
+  display: flex;
+  padding: 1rem;
+  list-style: none;
+}
+
+.links li {
+  padding: 0rem 1rem;
+}
+
+.links li a {
+  transition: all 0.3s ease;
+}
+
+.links li a:hover {
+  transition: all 0.3s ease;
+  color: #38b6ff;
+}
+
+.navBar button {
+  padding: 0.75rem 1rem;
+  background-color: #38b6ff;
+  color: black;
+  border: none;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.navBar button:hover {
+  background-color: #38b6ff80;
+}
+
+.logo {
+  cursor: pointer;
+  color: black;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 4rem;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  display: inline-block;
+}
