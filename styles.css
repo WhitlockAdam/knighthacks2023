@@ -18,23 +18,46 @@ body {
   margin: auto;
 }
 
-.mapContainer {
+.mapContainer,
+.aboutContainer {
   width: 70%;
-  display: flex;
+
   border: 1px solid gray;
   border-radius: 25px;
-  justify-content: center;
-  align-items: center;
+
   -webkit-box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px,
     5px 5px 15px 5px rgba(0, 0, 0, 0);
   box-shadow: rgb(0, 0, 0) 0px 10px 13px -7px, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  padding: 2rem;
+  margin: 4.5% auto;
+}
+
+.aboutContainer {
+  background: #c5c6d090;
+  border: 0.25rem solid gray;
+}
+
+.aboutContainer h2 {
+  width: 100%;
+  padding: 0rem 1rem;
+  text-align: left;
+}
+
+.mapContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: radial-gradient(
     circle,
     rgba(193, 255, 114, 0.5) 8%,
     rgba(56, 182, 255, 0.5) 100%
   );
-  padding: 2rem;
-  margin: 4.5% auto;
+}
+
+div p {
+  font-size: larger;
+  padding: 1rem;
+  width: 100%;
 }
 
 .bodyContainer {
@@ -99,6 +122,7 @@ button {
   border-radius: 1.5rem;
   font-size: 1rem;
   transition: all 0.3s ease;
+  filter: drop-shadow(3px 3px 5px #000000);
 }
 
 .navBar button:hover {
