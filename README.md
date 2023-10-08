@@ -5,8 +5,9 @@
 <div align="center">
     <a href="https://whitlockadam.github.io/knighthacks2023/index.html">
         <img src="images/Untitled_design__1_-removebg-preview.png" alt="Logo" width="80" height="80">
+        <h3 align="center">Refill Radar</h3>
         </a>
-<h3 align="center">Refill Radar</h3>
+
     <img src="images/demo image.png" alt="Website Example">
 <p align="center">
     
