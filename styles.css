@@ -61,6 +61,19 @@ div p {
   width: 100%;
 }
 
+#teamText {
+  margin-bottom: 0.5rem;
+}
+
+.gitLink {
+  padding: 0.25rem 1rem;
+  color: blue;
+}
+
+div h3 {
+  padding: 0.25rem 1rem;
+}
+
 .bodyContainer {
   width: 100%;
   display: flex;
