@@ -87,27 +87,27 @@
       var rwcPop = L.popup({
         closeOnClick: true,
       }).setContent(
-        "<h4>RWC First floor near the staircase next to trophy display<br/>Filter status: Poor"
+        "<h4>Location: RWC First floor near the staircase next to trophy display<br/>Filter status: Good"
       );
       var neptunePop = L.popup({
         closeOnClick: true,
       }).setContent(
-        "<h4>Location: Neptune dormitory Filter Status: Good<br/>Filter status: Poor"
+        "<h4>Location: Neptune dormitory Filter Status: Good<br/>Filter status: Good"
       );
-      var StudentUnionPop = L.popup({
+      var visualArtsPop = L.popup({
         closeOnClick: true,
       }).setContent(
-        "<h4>Location: First floor behind the common dining area <br/>Filter status: Poor"
+        "<h4>Location: Right hand side entering the west entrance <br/>Filter status: Poor"
       );
-      var StudentUnionPop = L.popup({
+      var libraryPop = L.popup({
         closeOnClick: true,
       }).setContent(
-        "<h4>Location: First floor behind the common dining area <br/>Filter status: Poor"
+        "<h4>Location: John C Hitt Library <br/>Filter status:Good"
       );
-      var StudentUnionPop = L.popup({
+      var techComPop = L.popup({
         closeOnClick: true,
       }).setContent(
-        "<h4>Location: First floor behind the common dining area <br/>Filter status: Poor"
+        "<h4>Location: Technology Commons <br/>Filter status: Poor"
       );
 
       L.control
@@ -120,11 +120,11 @@
       // Neptune
       L.marker([28.59369, -81.19879]).addTo(map).bindPopup(neptunePop);
       // technology commons
-      L.marker([28.60057, -81.2006]).addTo(map).bindPopup(pop);
+      L.marker([28.60057, -81.2006]).addTo(map).bindPopup(techComPop);
       // visual arts
-      L.marker([28.60303, -81.20325]).addTo(map).bindPopup(pop);
+      L.marker([28.60303, -81.20325]).addTo(map).bindPopup(visualArtsPop);
       // library
-      L.marker([28.60028, -81.2013]).addTo(map).bindPopup(pop);
+      L.marker([28.60028, -81.2013]).addTo(map).bindPopup(libraryPop);
     </script>
   </body>
 </html>
