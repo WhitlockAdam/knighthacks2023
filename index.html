@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
     <title>Refill Radar</title>
   </head>
   <body>
@@ -30,109 +41,42 @@
     <div class="bodyContainer">
       <div class="mapContainer">
         <!-- <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14011.64656953924!2d-81.21808434458006!3d28.602427399999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e7685d6a0a495f%3A0x5fd59b92b3c79bab!2sUniversity%20of%20Central%20Florida!5e0!3m2!1sen!2sus!4v1696707529021!5m2!1sen!2sus"
+          src="https://storage.googleapis.com/maps-solutions-u5ssibb0hu/locator-plus/bkon/locator-plus.html"
           width="100%"
           height="600px"
           style="border: 0"
-          allowfullscreen=""
+          zoom="2"
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe> -->
+        >
+        </iframe> -->
         <div id="map"></div>
-        <script>
-          function initMap() {}
-        </script>
-        <script
-          async
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9_WR_XWrnSXaxmtnv2rkukrjzWMWhB1c&callback=initMap"
-        ></script>
       </div>
     </div>
     <script>
-      ((g) => {
-        var h,
-          a,
-          k,
-          p = "The Google Maps JavaScript API",
-          c = "google",
-          l = "importLibrary",
-          q = "__ib__",
-          m = document,
-          b = window;
-        b = b[c] || (b[c] = {});
-        var d = b.maps || (b.maps = {}),
-          r = new Set(),
-          e = new URLSearchParams(),
-          u = () =>
-            h ||
-            (h = new Promise(async (f, n) => {
-              await (a = m.createElement("script"));
-              e.set("libraries", [...r] + "");
-              for (k in g)
-                e.set(
-                  k.replace(/[A-Z]/g, (t) => "_" + t[0].toLowerCase()),
-                  g[k]
-                );
-              e.set("callback", c + ".maps." + q);
-              a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
-              d[q] = f;
-              a.onerror = () => (h = n(Error(p + " could not load.")));
-              a.nonce = m.querySelector("script[nonce]")?.nonce || "";
-              m.head.append(a);
-            }));
-        d[l]
-          ? console.warn(p + " only loads once. Ignoring:", g)
-          : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
-      })({
-        key: "AIzaSyD9_WR_XWrnSXaxmtnv2rkukrjzWMWhB1c",
-        v: "weekly",
-        // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-        // Add other bootstrap parameters as needed, using camel case.
-      });
-    </script>
-    <script>
-      ((g) => {
-        var h,
-          a,
-          k,
-          p = "The Google Maps JavaScript API",
-          c = "google",
-          l = "importLibrary",
-          q = "__ib__",
-          m = document,
-          b = window;
-        b = b[c] || (b[c] = {});
-        var d = b.maps || (b.maps = {}),
-          r = new Set(),
-          e = new URLSearchParams(),
-          u = () =>
-            h ||
-            (h = new Promise(async (f, n) => {
-              await (a = m.createElement("script"));
-              e.set("libraries", [...r] + "");
-              for (k in g)
-                e.set(
-                  k.replace(/[A-Z]/g, (t) => "_" + t[0].toLowerCase()),
-                  g[k]
-                );
-              e.set("callback", c + ".maps." + q);
-              a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
-              d[q] = f;
-              a.onerror = () => (h = n(Error(p + " could not load.")));
-              a.nonce = m.querySelector("script[nonce]")?.nonce || "";
-              m.head.append(a);
-            }));
-        d[l]
-          ? console.warn(p + " only loads once. Ignoring:", g)
-          : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
-      })({
-        key: "YOUR_API_KEY",
-        v: "weekly",
-        // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-        // Add other bootstrap parameters as needed, using camel case.
-      });
-    </script>
+      var map = L.map("map").setView([28.606139, -81.1969788], 16);
 
+      const attribution =
+        '&copy; <a href="https://api.wheretheiss.at/v1/satellites/25544';
+
+      const tileUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+      const tiles = L.tileLayer(tileUrl, { attribution });
+      tiles.addTo(map);
+
+      const myIcon = L.icon({
+        iconUrl: "./images/ping.png",
+        iconSize: [75, 50],
+        iconAnchor: [22, 25],
+        popupAnchor: [-50, -150],
+      });
+
+      L.marker([28.59573, -81.19955], { icon: myIcon }).addTo(map);
+      L.marker([28.60188, -81.20035], { icon: myIcon }).addTo(map);
+      L.marker([28.59369, -81.19879], { icon: myIcon }).addTo(map);
+      L.marker([28.60057, -81.2006], { icon: myIcon }).addTo(map);
+      L.marker([28.600282664646766, -81.20133586270218], {
+        icon: myIcon,
+      }).addTo(map);
+    </script>
     <!-- <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.911643195512!2d-81.20263482450022!3d28.602427375681245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e7685d6a0a495f%3A0x5fd59b92b3c79bab!2sUniversity%20of%20Central%20Florida!5e0!3m2!1sen!2sus!4v1696688714337!5m2!1sen!2sus"
       width="600"

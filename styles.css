@@ -50,9 +50,11 @@ body {
   width: 100%;
 }
 
-.maps #map {
+#map {
+  height: 600px;
   width: 100%;
 }
+
 .navBar {
   font-size: 1.25rem;
   display: flex;
