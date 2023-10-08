@@ -15,6 +15,14 @@
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js"
+      charset="utf-8"
+    ></script>
     <title>Refill Radar</title>
   </head>
   <body>
@@ -40,20 +48,24 @@
 
     <div class="bodyContainer">
       <div class="mapContainer">
-        <!-- <iframe
-          src="https://storage.googleapis.com/maps-solutions-u5ssibb0hu/locator-plus/bkon/locator-plus.html"
-          width="100%"
-          height="600px"
-          style="border: 0"
-          zoom="2"
-          loading="lazy"
-        >
-        </iframe> -->
         <div id="map"></div>
       </div>
     </div>
     <script>
       var map = L.map("map").setView([28.606139, -81.1969788], 16);
+
+      function onLocationFound(e) {
+        var radius = e.accuracy;
+
+        L.marker(e.latlng)
+          .addTo(map)
+          .bindPopup("You are within " + radius + " meters from this point")
+          .openPopup();
+
+        L.circle(e.latlng, radius).addTo(map);
+      }
+
+      map.on("locationfound", onLocationFound);
 
       const attribution =
         '&copy; <a href="https://api.wheretheiss.at/v1/satellites/25544';
@@ -61,30 +73,15 @@
       const tileUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
       const tiles = L.tileLayer(tileUrl, { attribution });
       tiles.addTo(map);
-
-      const myIcon = L.icon({
-        iconUrl: "./images/ping.png",
-        iconSize: [75, 50],
-        iconAnchor: [22, 25],
-        popupAnchor: [-50, -150],
-      });
-
-      L.marker([28.59573, -81.19955], { icon: myIcon }).addTo(map);
-      L.marker([28.60188, -81.20035], { icon: myIcon }).addTo(map);
-      L.marker([28.59369, -81.19879], { icon: myIcon }).addTo(map);
-      L.marker([28.60057, -81.2006], { icon: myIcon }).addTo(map);
-      L.marker([28.600282664646766, -81.20133586270218], {
-        icon: myIcon,
-      }).addTo(map);
+      L.control
+        .locate({ watch: "false", enableHighAccuracy: "true" })
+        .addTo(map);
+      L.marker([28.59573, -81.19955]).addTo(map);
+      L.marker([28.60188, -81.20035]).addTo(map);
+      L.marker([28.59369, -81.19879]).addTo(map);
+      L.marker([28.60057, -81.2006]).addTo(map);
+      L.marker([28.60303, -81.20325]).addTo(map);
+      L.marker([28.60028, -81.2013]).addTo(map);
     </script>
-    <!-- <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.911643195512!2d-81.20263482450022!3d28.602427375681245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e7685d6a0a495f%3A0x5fd59b92b3c79bab!2sUniversity%20of%20Central%20Florida!5e0!3m2!1sen!2sus!4v1696688714337!5m2!1sen!2sus"
-      width="600"
-      height="450"
-      style="border: 0"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe> -->
   </body>
 </html>
