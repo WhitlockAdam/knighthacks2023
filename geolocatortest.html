@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nearby Locations</title>
+</head>
+<body>
+    <h1>Find Nearby Locations</h1>
+    <button id="getLocationButton">Get My Location</button>
+
+    <div id="results">
+        <!-- Display nearby locations here -->
+    </div>
+
+    <script>
+        const getLocationButton = document.getElementById('getLocationButton');
+        const resultsDiv = document.getElementById('results');
+
+        getLocationButton.addEventListener('click', () => {
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition(async (position) => {
+                    const { latitude, longitude } = position.coords;
+                    const maxDistance = 5; // Set your desired maximum distance in kilometers
+
+                    const response = await fetch(`/find_nearby?latitude=${latitude}&longitude=${longitude}&max_distance=${maxDistance}`);
+                    const data = await response.json();
+
+                    resultsDiv.innerHTML = `<h2>Nearby Locations:</h2><ul>${data.locations.map(location => `<li>${location}</li>`).join('')}</ul>`;
+                }, (error) => {
+                    console.error('Error getting location:', error);
+                });
+            } else {
+                alert('Geolocation is not supported by this browser.');
+            }
+        });
+    </script>
+</body>
+</html>
