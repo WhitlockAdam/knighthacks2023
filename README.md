@@ -3,7 +3,7 @@
 
 <br />
 <div align="center">
-    <a href=https://whitlockadam.github.io/knighthacks2023/index.html>
+    <a href="https://whitlockadam.github.io/knighthacks2023/index.html">
         <img src="images/Untitled_design__1_-removebg-preview.png" alt="Logo" width="80" height="80">
         </a>
 <h3 align="center">Refill Radar</h3>
