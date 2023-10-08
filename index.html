@@ -10,6 +10,9 @@
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin=""
     />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lora:wght@500&family=Nunito:ital@1&display=swap");
+    </style>
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
@@ -73,15 +76,55 @@
       const tileUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
       const tiles = L.tileLayer(tileUrl, { attribution });
       tiles.addTo(map);
+
+      // for(let i = 0; i < 4; i++)
+      // {
+      var studentUnionPop = L.popup({
+        closeOnClick: true,
+      }).setContent(
+        "<h4>Location: First floor behind the common dining area <br/>Filter status: Poor"
+      );
+      var rwcPop = L.popup({
+        closeOnClick: true,
+      }).setContent(
+        "<h4>RWC First floor near the staircase next to trophy display<br/>Filter status: Poor"
+      );
+      var neptunePop = L.popup({
+        closeOnClick: true,
+      }).setContent(
+        "<h4>Location: Neptune dormitory Filter Status: Good<br/>Filter status: Poor"
+      );
+      var StudentUnionPop = L.popup({
+        closeOnClick: true,
+      }).setContent(
+        "<h4>Location: First floor behind the common dining area <br/>Filter status: Poor"
+      );
+      var StudentUnionPop = L.popup({
+        closeOnClick: true,
+      }).setContent(
+        "<h4>Location: First floor behind the common dining area <br/>Filter status: Poor"
+      );
+      var StudentUnionPop = L.popup({
+        closeOnClick: true,
+      }).setContent(
+        "<h4>Location: First floor behind the common dining area <br/>Filter status: Poor"
+      );
+
       L.control
         .locate({ watch: "false", enableHighAccuracy: "true" })
         .addTo(map);
-      L.marker([28.59573, -81.19955]).addTo(map);
-      L.marker([28.60188, -81.20035]).addTo(map);
-      L.marker([28.59369, -81.19879]).addTo(map);
-      L.marker([28.60057, -81.2006]).addTo(map);
-      L.marker([28.60303, -81.20325]).addTo(map);
-      L.marker([28.60028, -81.2013]).addTo(map);
+      // RWC
+      L.marker([28.59573, -81.19955]).addTo(map).bindPopup(rwcPop);
+      // // Student Union
+      L.marker([28.60188, -81.20035]).addTo(map).bindPopup(studentUnionPop);
+      // Neptune
+      L.marker([28.59369, -81.19879]).addTo(map).bindPopup(neptunePop);
+      // technology commons
+      L.marker([28.60057, -81.2006]).addTo(map).bindPopup(pop);
+      // visual arts
+      L.marker([28.60303, -81.20325]).addTo(map).bindPopup(pop);
+      // library
+      L.marker([28.60028, -81.2013]).addTo(map).bindPopup(pop);
     </script>
   </body>
 </html>
